@@ -14,7 +14,8 @@ public:
     QTimer *timer;
 
     SmartTimer();
-
 };
 
+#include <alarm.h>
+//#include <Timer.h>
 #endif // SMARTTIMER_H

@@ -96,6 +96,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item alignment="Qt::AlignLeft">
           <widget class="QPushButton" name="delete_button">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="font">
             <font>
              <family>Calibri</family>
@@ -104,7 +107,7 @@
            </property>
            <property name="styleSheet">
             <string notr="true">color:rgb(20, 20, 20);
-background-color: rgb(255, 105, 105);
+background-color: rgb(255, 105, 105, 180);
 border-radius: 25px;
 padding: 15px;
 min-width: 5em;</string>
@@ -115,7 +118,27 @@ min-width: 5em;</string>
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="add_button">
+          <widget class="QPushButton" name="add_timer_button">
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:rgb(20, 20, 20);
+background-color: rgba(0, 200, 220, 180);
+border-radius: 25px;
+padding: 15px;
+min-width: 5em;</string>
+           </property>
+           <property name="text">
+            <string>Add timer</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignRight">
+          <widget class="QPushButton" name="add_alarm_button">
            <property name="font">
             <font>
              <family>Calibri</family>
@@ -126,13 +149,13 @@ min-width: 5em;</string>
            </property>
            <property name="styleSheet">
             <string notr="true">color:rgb(20, 20, 20);
-background-color: rgb(205, 255, 105);
+background-color: rgba(0, 200, 220, 180);
 border-radius: 25px;
 padding: 15px;
 min-width: 5em;</string>
            </property>
            <property name="text">
-            <string>Add</string>
+            <string>Add alarm</string>
            </property>
           </widget>
          </item>
@@ -216,8 +239,22 @@ min-width: 5em;</string>
          </item>
          <item alignment="Qt::AlignBottom">
           <widget class="QProgressBar" name="progressBar">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+QProgressBar::chunk {
+    background-color: #05B8CC;
+    width: 20px;
+}</string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
            <property name="value">
-            <number>50</number>
+            <number>0</number>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -237,7 +274,7 @@ min-width: 5em;</string>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item alignment="Qt::AlignBottom">
+         <item alignment="Qt::AlignTop">
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
@@ -259,7 +296,7 @@ min-width: 5em;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="Timer_note">
            <property name="font">
             <font>
              <family>Calibri Light</family>
@@ -296,12 +333,17 @@ min-width: 5em;</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(20, 20, 20);
-background-color: rgb(255, 105, 105);
+            <string notr="true">QPushButton {
+color:rgb(20, 20, 20);
+background-color: rgb(255, 105, 105, 180);
 border-radius: 25px;
 padding: 15px;
 min-width: 5em;
-</string>
+}
+
+QPushButton:pressed {
+    background-color: rgb(255, 105, 105, 150);
+}</string>
            </property>
            <property name="text">
             <string>STOP</string>
@@ -320,12 +362,18 @@ min-width: 5em;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color:rgb(20, 20, 20);
-background-color: rgb(205, 255, 105);
+            <string notr="true">QPushButton {
+color:rgb(20, 20, 20);
+background-color: rgb(5, 184, 204);
 border-radius: 55px;
 padding: 15px;
 min-width: 5em;
-min-height: 5em;</string>
+min-height: 5em;
+}
+
+QPushButton:pressed {
+    background-color: rgb(5, 184, 204, 180);
+}</string>
            </property>
            <property name="text">
             <string>START</string>
@@ -350,11 +398,17 @@ min-height: 5em;</string>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color:rgb(20, 20, 20);
-background-color: rgb(170, 170, 255);
+            <string notr="true">QPushButton {
+color:rgb(20, 20, 20);
+background-color: rgb(190, 190, 190, 180);
 border-radius: 25px;
 padding: 15px;
-min-width: 5em;</string>
+min-width: 5em;
+}
+
+QPushButton:pressed {
+    background-color: rgb(190, 190, 190, 150);
+}</string>
            </property>
            <property name="text">
             <string>RESET</string>

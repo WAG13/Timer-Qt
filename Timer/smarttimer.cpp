@@ -1,4 +1,4 @@
-#include "SmartTimer.h"
+#include "smarttimer.h"
 
 SmartTimer::SmartTimer()
 {

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>Timer_icons/alarm.png</file>
+        <file>Timer_icons/timer.png</file>
+    </qresource>
+</RCC>

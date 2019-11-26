@@ -34,7 +34,8 @@ public:
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *delete_button;
-    QPushButton *add_button;
+    QPushButton *add_timer_button;
+    QPushButton *add_alarm_button;
     QFrame *line;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout;
@@ -45,7 +46,7 @@ public:
     QProgressBar *progressBar;
     QVBoxLayout *verticalLayout_3;
     QLabel *label_3;
-    QLabel *label_5;
+    QLabel *Timer_note;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *stop_button;
     QPushButton *play_button;
@@ -108,33 +109,45 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         delete_button = new QPushButton(widget_3);
         delete_button->setObjectName(QString::fromUtf8("delete_button"));
+        delete_button->setEnabled(false);
         QFont font3;
         font3.setFamily(QString::fromUtf8("Calibri"));
         font3.setPointSize(16);
         delete_button->setFont(font3);
         delete_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
-"background-color: rgb(255, 105, 105);\n"
+"background-color: rgb(255, 105, 105, 180);\n"
 "border-radius: 25px;\n"
 "padding: 15px;\n"
 "min-width: 5em;"));
 
         horizontalLayout_3->addWidget(delete_button, 0, Qt::AlignLeft);
 
-        add_button = new QPushButton(widget_3);
-        add_button->setObjectName(QString::fromUtf8("add_button"));
+        add_timer_button = new QPushButton(widget_3);
+        add_timer_button->setObjectName(QString::fromUtf8("add_timer_button"));
+        add_timer_button->setFont(font3);
+        add_timer_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
+"background-color: rgba(0, 200, 220, 180);\n"
+"border-radius: 25px;\n"
+"padding: 15px;\n"
+"min-width: 5em;"));
+
+        horizontalLayout_3->addWidget(add_timer_button, 0, Qt::AlignRight);
+
+        add_alarm_button = new QPushButton(widget_3);
+        add_alarm_button->setObjectName(QString::fromUtf8("add_alarm_button"));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(16);
         font4.setBold(false);
         font4.setWeight(50);
-        add_button->setFont(font4);
-        add_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
-"background-color: rgb(205, 255, 105);\n"
+        add_alarm_button->setFont(font4);
+        add_alarm_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
+"background-color: rgba(0, 200, 220, 180);\n"
 "border-radius: 25px;\n"
 "padding: 15px;\n"
 "min-width: 5em;"));
 
-        horizontalLayout_3->addWidget(add_button, 0, Qt::AlignRight);
+        horizontalLayout_3->addWidget(add_alarm_button, 0, Qt::AlignRight);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -189,7 +202,17 @@ public:
 
         progressBar = new QProgressBar(widget_2);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setValue(50);
+        progressBar->setStyleSheet(QString::fromUtf8("QProgressBar {\n"
+"    border: 2px solid grey;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"    background-color: #05B8CC;\n"
+"    width: 20px;\n"
+"}"));
+        progressBar->setMaximum(100);
+        progressBar->setValue(0);
         progressBar->setAlignment(Qt::AlignCenter);
         progressBar->setTextVisible(false);
         progressBar->setInvertedAppearance(false);
@@ -213,16 +236,16 @@ public:
         label_3->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);"));
         label_3->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_3->addWidget(label_3, 0, Qt::AlignBottom);
+        verticalLayout_3->addWidget(label_3, 0, Qt::AlignTop);
 
-        label_5 = new QLabel(widget_2);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font1);
-        label_5->setToolTipDuration(-1);
-        label_5->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);"));
-        label_5->setAlignment(Qt::AlignCenter);
+        Timer_note = new QLabel(widget_2);
+        Timer_note->setObjectName(QString::fromUtf8("Timer_note"));
+        Timer_note->setFont(font1);
+        Timer_note->setToolTipDuration(-1);
+        Timer_note->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);"));
+        Timer_note->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_3->addWidget(label_5);
+        verticalLayout_3->addWidget(Timer_note);
 
 
         verticalLayout->addLayout(verticalLayout_3);
@@ -238,12 +261,17 @@ public:
         font8.setItalic(false);
         font8.setWeight(50);
         stop_button->setFont(font8);
-        stop_button->setStyleSheet(QString::fromUtf8("color: rgb(20, 20, 20);\n"
-"background-color: rgb(255, 105, 105);\n"
+        stop_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color:rgb(20, 20, 20);\n"
+"background-color: rgb(255, 105, 105, 180);\n"
 "border-radius: 25px;\n"
 "padding: 15px;\n"
 "min-width: 5em;\n"
-""));
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(255, 105, 105, 150);\n"
+"}"));
 
         horizontalLayout_2->addWidget(stop_button);
 
@@ -256,12 +284,18 @@ public:
         font9.setItalic(false);
         font9.setWeight(75);
         play_button->setFont(font9);
-        play_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
-"background-color: rgb(205, 255, 105);\n"
+        play_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color:rgb(20, 20, 20);\n"
+"background-color: rgb(5, 184, 204);\n"
 "border-radius: 55px;\n"
 "padding: 15px;\n"
 "min-width: 5em;\n"
-"min-height: 5em;"));
+"min-height: 5em;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(5, 184, 204, 180);\n"
+"}"));
         play_button->setAutoDefault(false);
         play_button->setFlat(false);
 
@@ -270,11 +304,17 @@ public:
         reset_button = new QPushButton(widget_2);
         reset_button->setObjectName(QString::fromUtf8("reset_button"));
         reset_button->setFont(font8);
-        reset_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
-"background-color: rgb(170, 170, 255);\n"
+        reset_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color:rgb(20, 20, 20);\n"
+"background-color: rgb(190, 190, 190, 180);\n"
 "border-radius: 25px;\n"
 "padding: 15px;\n"
-"min-width: 5em;"));
+"min-width: 5em;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(190, 190, 190, 150);\n"
+"}"));
 
         horizontalLayout_2->addWidget(reset_button);
 
@@ -296,12 +336,13 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Timers:", nullptr));
         delete_button->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        add_button->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
+        add_timer_button->setText(QCoreApplication::translate("MainWindow", "Add timer", nullptr));
+        add_alarm_button->setText(QCoreApplication::translate("MainWindow", "Add alarm", nullptr));
         Timer_name->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));
         Timer_mode->setText(QCoreApplication::translate("MainWindow", "mode", nullptr));
         Timer_time->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Note:", nullptr));
-        label_5->setText(QString());
+        Timer_note->setText(QString());
         stop_button->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
         play_button->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         reset_button->setText(QCoreApplication::translate("MainWindow", "RESET", nullptr));
