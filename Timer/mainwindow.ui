@@ -85,10 +85,14 @@
           <font>
            <family>Calibri Light</family>
            <pointsize>14</pointsize>
+           <weight>3</weight>
+           <italic>false</italic>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(190, 190, 190);</string>
+          <string notr="true">color: rgb(190, 190, 190);
+font: 25 14pt &quot;Calibri Light&quot;;</string>
          </property>
         </widget>
        </item>
@@ -114,13 +118,6 @@ min-width: 5em;</string>
            </property>
            <property name="text">
             <string>Delete</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="text">
-            <string>PushButton</string>
            </property>
           </widget>
          </item>
@@ -162,19 +159,21 @@ min-width: 5em;</string>
      <widget class="QWidget" name="widget_2" native="true">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="timer_layout">
          <item alignment="Qt::AlignTop">
           <widget class="QLabel" name="Timer_name">
            <property name="font">
             <font>
-             <family>Calibri Light</family>
-             <pointsize>22</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Calibri</family>
+             <pointsize>20</pointsize>
+             <weight>3</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(190, 190, 190);</string>
+            <string notr="true">color: rgb(190, 190, 190);
+font: 25 20pt &quot;Calibri&quot;</string>
            </property>
            <property name="text">
             <string>Name</string>
@@ -193,10 +192,14 @@ min-width: 5em;</string>
             <font>
              <family>Calibri Light</family>
              <pointsize>14</pointsize>
+             <weight>3</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(90, 90, 90);</string>
+            <string notr="true">color: rgb(90, 90, 90);
+font: 25 14pt &quot;Calibri Light&quot;;</string>
            </property>
            <property name="text">
             <string>mode</string>
@@ -210,11 +213,16 @@ min-width: 5em;</string>
           <widget class="QLabel" name="Timer_time">
            <property name="font">
             <font>
+             <family>Segoe UI</family>
              <pointsize>30</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(190, 190, 190);</string>
+            <string notr="true">color: rgb(190, 190, 190);
+font: 75 30pt &quot;Segoe UI&quot;;</string>
            </property>
            <property name="text">
             <string>00:00:00</string>
@@ -226,6 +234,12 @@ min-width: 5em;</string>
          </item>
          <item alignment="Qt::AlignBottom">
           <widget class="QProgressBar" name="progressBar">
+           <property name="minimumSize">
+            <size>
+             <width>370</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">QProgressBar {
     border: 2px solid grey;
@@ -234,8 +248,8 @@ min-width: 5em;</string>
 
 QProgressBar::chunk {
     background-color: #05B8CC;
-    width: 20px;
-}</string>
+	width: 1px;
+ }</string>
            </property>
            <property name="maximum">
             <number>100</number>
@@ -260,19 +274,27 @@ QProgressBar::chunk {
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <layout class="QVBoxLayout" name="note_layout">
          <item alignment="Qt::AlignTop">
           <widget class="QLabel" name="label_3">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>Calibri Light</family>
-             <pointsize>16</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Calibri</family>
+             <pointsize>20</pointsize>
+             <weight>3</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(190, 190, 190);</string>
+            <string notr="true">color: rgb(190, 190, 190);
+font: 25 20pt &quot;Calibri&quot;</string>
            </property>
            <property name="text">
             <string>Note:</string>
@@ -284,17 +306,27 @@ QProgressBar::chunk {
          </item>
          <item alignment="Qt::AlignTop">
           <widget class="QLabel" name="Timer_note">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>150</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>Calibri Light</family>
              <pointsize>16</pointsize>
+             <weight>3</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="toolTipDuration">
             <number>-1</number>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(190, 190, 190);</string>
+            <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
            </property>
            <property name="text">
             <string/>
@@ -307,7 +339,7 @@ QProgressBar::chunk {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="buttons_layout">
          <item>
           <widget class="QPushButton" name="stop_button">
            <property name="font">

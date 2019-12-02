@@ -20,10 +20,9 @@ timersetter::~timersetter()
 
 void timersetter::on_pushButton_OK_clicked()
 {
-    SmartTimer timer("Name",1,QDateTime::currentDateTimeUtc(),ts->timeEdit->time().msecsSinceStartOfDay());
+    SmartTimer timer(ts->plainTextEdit->toPlainText(), 1, QDateTime::currentDateTimeUtc(), ts->timeEdit->time().msecsSinceStartOfDay());
     qDebug() << timer.time.toTime_t();
     //timer.time.addMSecs(ts->timeEdit->time().msecsSinceStartOfDay());
-    qDebug() << timer.time.toTime_t();
     if (ts->radio_alarm->isChecked()){
        send_element(timer);
     }

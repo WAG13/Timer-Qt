@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[14];
-    char stringdata0[187];
+    QByteArrayData data[15];
+    char stringdata0[191];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,20 +39,21 @@ QT_MOC_LITERAL(3, 21, 8), // "addTimer"
 QT_MOC_LITERAL(4, 30, 10), // "SmartTimer"
 QT_MOC_LITERAL(5, 41, 5), // "timer"
 QT_MOC_LITERAL(6, 47, 11), // "add_element"
-QT_MOC_LITERAL(7, 59, 10), // "updateTime"
-QT_MOC_LITERAL(8, 70, 21), // "on_add_button_clicked"
-QT_MOC_LITERAL(9, 92, 24), // "on_delete_button_clicked"
-QT_MOC_LITERAL(10, 117, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(11, 139, 25), // "on_listWidget_itemClicked"
-QT_MOC_LITERAL(12, 165, 16), // "QListWidgetItem*"
-QT_MOC_LITERAL(13, 182, 4) // "item"
+QT_MOC_LITERAL(7, 59, 11), // "update_time"
+QT_MOC_LITERAL(8, 71, 21), // "on_add_button_clicked"
+QT_MOC_LITERAL(9, 93, 24), // "on_delete_button_clicked"
+QT_MOC_LITERAL(10, 118, 25), // "on_listWidget_itemClicked"
+QT_MOC_LITERAL(11, 144, 16), // "QListWidgetItem*"
+QT_MOC_LITERAL(12, 161, 4), // "item"
+QT_MOC_LITERAL(13, 166, 10), // "show_timer"
+QT_MOC_LITERAL(14, 177, 13) // "current_timer"
 
     },
     "MainWindow\0addAlarm\0\0addTimer\0SmartTimer\0"
-    "timer\0add_element\0updateTime\0"
+    "timer\0add_element\0update_time\0"
     "on_add_button_clicked\0on_delete_button_clicked\0"
-    "on_pushButton_clicked\0on_listWidget_itemClicked\0"
-    "QListWidgetItem*\0item"
+    "on_listWidget_itemClicked\0QListWidgetItem*\0"
+    "item\0show_timer\0current_timer"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,8 +77,8 @@ static const uint qt_meta_data_MainWindow[] = {
        7,    0,   61,    2, 0x0a /* Public */,
        8,    0,   62,    2, 0x08 /* Private */,
        9,    0,   63,    2, 0x08 /* Private */,
-      10,    0,   64,    2, 0x08 /* Private */,
-      11,    1,   65,    2, 0x08 /* Private */,
+      10,    1,   64,    2, 0x08 /* Private */,
+      13,    1,   67,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -86,8 +87,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 12,   13,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 4,   14,
 
        0        // eod
 };
@@ -101,11 +102,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->addAlarm(); break;
         case 1: _t->addTimer((*reinterpret_cast< SmartTimer(*)>(_a[1]))); break;
         case 2: _t->add_element((*reinterpret_cast< SmartTimer(*)>(_a[1]))); break;
-        case 3: _t->updateTime(); break;
+        case 3: _t->update_time(); break;
         case 4: _t->on_add_button_clicked(); break;
         case 5: _t->on_delete_button_clicked(); break;
-        case 6: _t->on_pushButton_clicked(); break;
-        case 7: _t->on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 6: _t->on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 7: _t->show_timer((*reinterpret_cast< SmartTimer(*)>(_a[1]))); break;
         default: ;
         }
     }

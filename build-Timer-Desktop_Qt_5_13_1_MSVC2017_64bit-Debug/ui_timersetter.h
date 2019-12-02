@@ -73,7 +73,13 @@ public:
 
         plainTextEdit = new QPlainTextEdit(timersetter);
         plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        plainTextEdit->setMinimumSize(QSize(0, 45));
         plainTextEdit->setMaximumSize(QSize(16777215, 35));
+        plainTextEdit->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 16pt \"Calibri Light\";"));
+        plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        plainTextEdit->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
         plainTextEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
         plainTextEdit->setOverwriteMode(false);
 
@@ -160,6 +166,8 @@ public:
 
         textEdit = new QTextEdit(horizontalWidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 16pt \"Calibri Light\";"));
 
         gridLayout_2->addWidget(textEdit, 1, 1, 1, 1);
 

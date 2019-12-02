@@ -14,7 +14,7 @@ public:
     int ms_end;
     int ms;
 
-    SmartTimer(QString name, int mode, QDateTime time,int ms);
+    SmartTimer(QString name, int mode, QDateTime time, int ms);
     ~SmartTimer();
 };
 

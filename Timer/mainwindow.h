@@ -22,8 +22,8 @@ public:
     QList<SmartTimer> timers;
     QStringList str;
     QTimer *timer;
-    unsigned int timer_count = 0;
-    unsigned int timer_id = 0;
+    int timer_count = 0;
+    int timer_id = 0;
     bool work = false;
 
 public slots:
@@ -31,16 +31,13 @@ public slots:
     void addTimer(SmartTimer timer);
     void add_element(SmartTimer timer);
 
-    void updateTime();
+    void update_time();
+
 private slots:
     void on_add_button_clicked();
-
     void on_delete_button_clicked();
-
-    void on_pushButton_clicked();
-
     void on_listWidget_itemClicked(QListWidgetItem *item);
-
+    void show_timer(SmartTimer current_timer);
 private:
     Ui::MainWindow *ui;
     timersetter *ts;
