@@ -34,8 +34,8 @@ public:
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *delete_button;
-    QPushButton *add_timer_button;
-    QPushButton *add_alarm_button;
+    QPushButton *pushButton;
+    QPushButton *add_button;
     QFrame *line;
     QWidget *widget_2;
     QVBoxLayout *verticalLayout;
@@ -122,32 +122,26 @@ public:
 
         horizontalLayout_3->addWidget(delete_button, 0, Qt::AlignLeft);
 
-        add_timer_button = new QPushButton(widget_3);
-        add_timer_button->setObjectName(QString::fromUtf8("add_timer_button"));
-        add_timer_button->setFont(font3);
-        add_timer_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
-"background-color: rgba(0, 200, 220, 180);\n"
-"border-radius: 25px;\n"
-"padding: 15px;\n"
-"min-width: 5em;"));
+        pushButton = new QPushButton(widget_3);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
-        horizontalLayout_3->addWidget(add_timer_button, 0, Qt::AlignRight);
+        horizontalLayout_3->addWidget(pushButton);
 
-        add_alarm_button = new QPushButton(widget_3);
-        add_alarm_button->setObjectName(QString::fromUtf8("add_alarm_button"));
+        add_button = new QPushButton(widget_3);
+        add_button->setObjectName(QString::fromUtf8("add_button"));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Calibri"));
         font4.setPointSize(16);
         font4.setBold(false);
         font4.setWeight(50);
-        add_alarm_button->setFont(font4);
-        add_alarm_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
+        add_button->setFont(font4);
+        add_button->setStyleSheet(QString::fromUtf8("color:rgb(20, 20, 20);\n"
 "background-color: rgba(0, 200, 220, 180);\n"
 "border-radius: 25px;\n"
 "padding: 15px;\n"
 "min-width: 5em;"));
 
-        horizontalLayout_3->addWidget(add_alarm_button, 0, Qt::AlignRight);
+        horizontalLayout_3->addWidget(add_button, 0, Qt::AlignRight);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -245,7 +239,7 @@ public:
         Timer_note->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);"));
         Timer_note->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_3->addWidget(Timer_note);
+        verticalLayout_3->addWidget(Timer_note, 0, Qt::AlignTop);
 
 
         verticalLayout->addLayout(verticalLayout_3);
@@ -336,8 +330,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Timers:", nullptr));
         delete_button->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        add_timer_button->setText(QCoreApplication::translate("MainWindow", "Add timer", nullptr));
-        add_alarm_button->setText(QCoreApplication::translate("MainWindow", "Add alarm", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        add_button->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         Timer_name->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));
         Timer_mode->setText(QCoreApplication::translate("MainWindow", "mode", nullptr));
         Timer_time->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));

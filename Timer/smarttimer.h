@@ -1,7 +1,7 @@
 #ifndef SMARTTIMER_H
 #define SMARTTIMER_H
 
-#include <QTimer>
+#include <QDateTime>
 
 class SmartTimer
 {
@@ -9,13 +9,13 @@ public:
     int id;
     QString name;
     int mode;
-
     bool work;
-    QTimer *timer;
+    QDateTime time;
+    int ms_end;
+    int ms;
 
-    SmartTimer();
+    SmartTimer(QString name, int mode, QDateTime time,int ms);
+    ~SmartTimer();
 };
 
-#include <alarm.h>
-//#include <Timer.h>
 #endif // SMARTTIMER_H

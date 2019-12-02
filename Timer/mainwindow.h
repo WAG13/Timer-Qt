@@ -20,10 +20,20 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QList<SmartTimer> timers;
+    QStringList str;
+    QTimer *timer;
+    unsigned int timer_count = 0;
+    unsigned int timer_id = 0;
+    bool work = false;
 
+public slots:
+    void addAlarm();
+    void addTimer(SmartTimer timer);
+    void add_element(SmartTimer timer);
+
+    void updateTime();
 private slots:
-    void on_add_alarm_button_clicked();
-    void on_add_timer_button_clicked();
+    void on_add_button_clicked();
 
     void on_delete_button_clicked();
 
@@ -32,10 +42,8 @@ private slots:
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
 private:
-    int timer_count = 0;
     Ui::MainWindow *ui;
     timersetter *ts;
-    bool work = false;
 
 };
 #endif // MAINWINDOW_H

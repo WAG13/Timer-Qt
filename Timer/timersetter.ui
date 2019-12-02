@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>400</height>
+    <height>606</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -28,6 +28,36 @@
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Name:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="lineWrapMode">
+        <enum>QPlainTextEdit::WidgetWidth</enum>
+       </property>
+       <property name="overwriteMode">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
      <item alignment="Qt::AlignTop">
       <widget class="QLabel" name="label">
        <property name="maximumSize">
@@ -40,10 +70,128 @@
         <font>
          <family>Calibri Light</family>
          <pointsize>16</pointsize>
+         <weight>3</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(190, 190, 190);</string>
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Set type:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item alignment="Qt::AlignTop">
+         <widget class="QRadioButton" name="radio_alarm">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/rec/Timer_icons/alarm.png);
+color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Alarm</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignTop">
+         <widget class="QRadioButton" name="radio_timer">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/rec/Timer_icons/timer.png);
+color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Timer</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="horizontalWidget" native="true">
+       <property name="font">
+        <font>
+         <family>Calibri Light</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="check_melody">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(190, 190, 190);
+font: 25 14pt &quot;Calibri Light&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Melodic</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="melody_button">
+          <property name="maximumSize">
+           <size>
+            <width>300</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:rgb(20, 20, 20);
+background-color: rgba(200, 200, 220, 180);
+border-radius: 25px;
+padding: 15px;
+min-width: 5em;</string>
+          </property>
+          <property name="text">
+           <string>Choose melody</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="check_note">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(190, 190, 190);
+font: 25 14pt &quot;Calibri Light&quot;;color: rgb(190, 190, 190);
+font: 25 14pt &quot;Calibri Light&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Note</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QTextEdit" name="textEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
        </property>
        <property name="text">
         <string>Set time:</string>
@@ -53,79 +201,20 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item alignment="Qt::AlignTop">
       <widget class="QTimeEdit" name="timeEdit">
-       <property name="minimumSize">
-        <size>
-         <width>480</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(190, 190, 190);</string>
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::UpDownArrows</enum>
-       </property>
-       <property name="dateTime">
-        <datetime>
-         <hour>0</hour>
-         <minute>0</minute>
-         <second>0</second>
-         <year>2019</year>
-         <month>12</month>
-         <day>1</day>
-        </datetime>
-       </property>
-       <property name="maximumDateTime">
-        <datetime>
-         <hour>23</hour>
-         <minute>59</minute>
-         <second>59</second>
-         <year>2019</year>
-         <month>12</month>
-         <day>1</day>
-        </datetime>
-       </property>
-       <property name="currentSection">
-        <enum>QDateTimeEdit::MSecSection</enum>
-       </property>
        <property name="displayFormat">
         <string>HH:mm:ss:zzz</string>
        </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignBottom">
-      <widget class="QDial" name="dial">
-       <property name="font">
-        <font>
-         <family>Calibri Light</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="wrapping">
-        <bool>true</bool>
-       </property>
-       <property name="notchTarget">
-        <double>8.699999999999999</double>
-       </property>
-       <property name="notchesVisible">
-        <bool>true</bool>
+       <property name="timeSpec">
+        <enum>Qt::LocalTime</enum>
        </property>
       </widget>
      </item>
@@ -148,7 +237,7 @@ padding: 15px;
 min-width: 5em;</string>
           </property>
           <property name="text">
-           <string>Cancle</string>
+           <string>Cancel</string>
           </property>
          </widget>
         </item>

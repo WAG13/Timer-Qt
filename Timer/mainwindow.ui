@@ -117,28 +117,15 @@ min-width: 5em;</string>
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="add_timer_button">
-           <property name="font">
-            <font>
-             <family>Calibri</family>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color:rgb(20, 20, 20);
-background-color: rgba(0, 200, 220, 180);
-border-radius: 25px;
-padding: 15px;
-min-width: 5em;</string>
-           </property>
+         <item>
+          <widget class="QPushButton" name="pushButton">
            <property name="text">
-            <string>Add timer</string>
+            <string>PushButton</string>
            </property>
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="add_alarm_button">
+          <widget class="QPushButton" name="add_button">
            <property name="font">
             <font>
              <family>Calibri</family>
@@ -155,7 +142,7 @@ padding: 15px;
 min-width: 5em;</string>
            </property>
            <property name="text">
-            <string>Add alarm</string>
+            <string>Add</string>
            </property>
           </widget>
          </item>
@@ -295,7 +282,7 @@ QProgressBar::chunk {
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignTop">
           <widget class="QLabel" name="Timer_note">
            <property name="font">
             <font>
