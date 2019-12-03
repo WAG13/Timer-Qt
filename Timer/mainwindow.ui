@@ -80,6 +80,124 @@
         </widget>
        </item>
        <item>
+        <widget class="QComboBox" name="comboBox">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: #111;
+    selection-color: white;
+    color: white;
+    background-color: rgb(153, 153, 153);
+    border-style: solid;
+    border: 2px solid #1e1e1e;
+    border-radius: 5;
+    padding: 1px 0px 1px 20px;
+	font: 25 14pt &quot;Calibri Light&quot;;
+}
+
+
+QComboBox:hover, QPushButton:hover
+{
+    border: 1px solid rgb(5, 184, 204);
+    color: white;
+}
+
+QComboBox::drop-down
+{
+     subcontrol-origin: padding;
+     subcontrol-position: top right;
+     width: 15px;
+     color: white;
+     border-left-width: 0px;
+     border-left-color: darkgray;
+     border-left-style: solid; 
+     border-top-right-radius: 3px; 
+     border-bottom-right-radius: 3px;
+     padding-left: 10px;
+ }
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: white;
+    selection-background-color: rgba(5, 184, 204, 100);
+}</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="currentText">
+          <string>all</string>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="maxCount">
+          <number>2147483644</number>
+         </property>
+         <property name="insertPolicy">
+          <enum>QComboBox::InsertAtBottom</enum>
+         </property>
+         <item>
+          <property name="text">
+           <string>all</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>timers</string>
+          </property>
+          <property name="icon">
+           <iconset resource="rec.qrc">
+            <normaloff>:/rec/Timer_icons/timer.png</normaloff>:/rec/Timer_icons/timer.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>alarms</string>
+          </property>
+          <property name="icon">
+           <iconset resource="rec.qrc">
+            <normaloff>:/rec/Timer_icons/alarm.png</normaloff>:/rec/Timer_icons/alarm.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>working</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>paused</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>with notes</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>melodic</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>defoult</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>my types</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
         <widget class="QListWidget" name="listWidget">
          <property name="font">
           <font>
@@ -453,6 +571,8 @@ QPushButton:pressed {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="rec.qrc"/>
+ </resources>
  <connections/>
 </ui>

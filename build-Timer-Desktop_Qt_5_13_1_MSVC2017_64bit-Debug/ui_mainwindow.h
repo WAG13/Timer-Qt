@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -34,6 +35,7 @@ public:
     QWidget *widget_3;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_4;
+    QComboBox *comboBox;
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *delete_button;
@@ -99,6 +101,70 @@ public:
         label_4->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_4);
+
+        comboBox = new QComboBox(widget_3);
+        comboBox->addItem(QString());
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/rec/Timer_icons/timer.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon, QString());
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/rec/Timer_icons/alarm.png"), QSize(), QIcon::Normal, QIcon::Off);
+        comboBox->addItem(icon1, QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setAutoFillBackground(false);
+        comboBox->setStyleSheet(QString::fromUtf8("QComboBox\n"
+"{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    selection-background-color: #111;\n"
+"    selection-color: white;\n"
+"    color: white;\n"
+"    background-color: rgb(153, 153, 153);\n"
+"    border-style: solid;\n"
+"    border: 2px solid #1e1e1e;\n"
+"    border-radius: 5;\n"
+"    padding: 1px 0px 1px 20px;\n"
+"	font: 25 14pt \"Calibri Light\";\n"
+"}\n"
+"\n"
+"\n"
+"QComboBox:hover, QPushButton:hover\n"
+"{\n"
+"    border: 1px solid rgb(5, 184, 204);\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down\n"
+"{\n"
+"     subcontrol-origin: padding;\n"
+"     subcontrol-position: top right;\n"
+"     width: 15px;\n"
+"     color: white;\n"
+"     border-left-width: 0px;\n"
+"     border-left-color: darkgray;\n"
+"     border-left-style: solid; \n"
+"     border-top-right-radius: 3px; \n"
+"     border-bottom-right-radius: 3px;\n"
+"     padding-left: 10px;\n"
+" }\n"
+"QComboBox QAbstractItemView\n"
+"{\n"
+"    border: 2px solid darkgray;\n"
+"    color: white;\n"
+"    selecti"
+                        "on-background-color: rgba(5, 184, 204, 100);\n"
+"}"));
+        comboBox->setEditable(false);
+        comboBox->setMaxCount(2147483644);
+        comboBox->setInsertPolicy(QComboBox::InsertAtBottom);
+
+        verticalLayout_2->addWidget(comboBox);
 
         listWidget = new QListWidget(widget_3);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -336,6 +402,9 @@ public:
 
         retranslateUi(MainWindow);
 
+        comboBox->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
@@ -343,6 +412,17 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Timers:", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "all", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "timers", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "alarms", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("MainWindow", "working", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("MainWindow", "paused", nullptr));
+        comboBox->setItemText(5, QCoreApplication::translate("MainWindow", "with notes", nullptr));
+        comboBox->setItemText(6, QCoreApplication::translate("MainWindow", "melodic", nullptr));
+        comboBox->setItemText(7, QCoreApplication::translate("MainWindow", "defoult", nullptr));
+        comboBox->setItemText(8, QCoreApplication::translate("MainWindow", "my types", nullptr));
+
+        comboBox->setCurrentText(QCoreApplication::translate("MainWindow", "all", nullptr));
         delete_button->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         add_button->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         Timer_name->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));

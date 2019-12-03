@@ -46,7 +46,7 @@ void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void MainWindow::add_element(SmartTimer* timer)
 {
-
+    ui->comboBox->setCurrentIndex(0);
     if(timer->mode==2)
     {
         addAlarm(timer);
@@ -144,4 +144,45 @@ void MainWindow::on_play_button_clicked()
 void MainWindow::on_reset_button_clicked()
 {
     timers[ui->listWidget->currentRow()]->reset();
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    if (index==0) ui->delete_button->show();
+    else ui->delete_button->hide();
+    ui->listWidget->clear();
+
+    if (timers.size()>0)
+    for (int i = 0; i < timers.size(); i++){
+        bool filter=true;
+        qDebug()<<i;
+
+        switch (index)
+        {
+        case 0: {filter=true;} break;
+        case 1: {filter=timers[i]->mode==1;}break;
+        case 2: {filter=timers[i]->mode==2;}break;
+        case 3: {filter=timers[i]->work;}break;
+        case 4: {filter=!(timers[i]->work);}break;
+        case 5: {filter=timers[i]->is_note;}break;
+        case 6: {filter=timers[i]->is_melodic;}break;
+        case 7: {filter=(timers[i]->type == "defoult");}break;
+        case 8: {filter=(timers[i]->type != "defoult");}break;
+        }
+        if (filter)
+        {
+            if (timers[i]->mode==1)
+            {qDebug()<<"timer";
+            QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timers[i]->name);
+            ui->listWidget->addItem(item);
+            }else{qDebug()<<"alarm";
+            QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),timers[i]->name);
+            ui->listWidget->addItem(item);
+            }
+        }
+        else {
+            QListWidgetItem *item = new QListWidgetItem("");
+            ui->listWidget->addItem(item);
+        }
+    }
 }

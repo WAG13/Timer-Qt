@@ -9,12 +9,10 @@ SmartTimerAlarm::SmartTimerAlarm(QString name_, QTime end_time)
     time.setTime(end_time);
     QDateTime now = QDateTime::currentDateTimeUtc();
     ms = now.msecsTo(time);
-    qDebug()<<ms;
     if (ms <= 0)
-    {time=time.addDays(1);
-    qDebug()<<time.toString();}
+        time=time.addDays(1);
+
     ms = now.msecsTo(time);
-    qDebug()<<ms;
     ms_end = ms;
     melodyURL = QUrl("qrc:/sound/sounds/cuckoo-clock-05.wav");
 }

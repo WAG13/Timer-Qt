@@ -42,6 +42,8 @@ private slots:
 
     void on_reset_button_clicked();
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     timersetter *ts;
