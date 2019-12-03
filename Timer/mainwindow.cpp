@@ -163,10 +163,20 @@ void MainWindow::update_time()
     for (int i = 0; i < timers.size(); i++){
         if (timers[i]->ms <= 0)
         {
-            qDebug()<<current.time().toString("hh:mm:ss");
-            if (current.time()<DND_start || current.time()>DND_finish)
-                if (timers[i]->work)
-                    end_signal(timers[i]);
+            if(DNDisturb)
+            {
+                if (DND_start<DND_finish)
+                {
+                if ((current.time()>=DND_start && current.time()<=DND_finish)){}
+                else if (timers[i]->work) end_signal(timers[i]);
+                }else{
+                if ((current.time()>=DND_start && current.time()<= DND_finish))
+                    if (timers[i]->work) end_signal(timers[i]);
+                }
+            }
+
+               else if (timers[i]->work && !DNDisturb)
+                   end_signal(timers[i]);
             timers[i]->work = false;
         }
         if (timers[i]->work)
@@ -228,7 +238,9 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 
 }
 
-
+/**
+* @brief buttonto rule a group of smart timers
+*/
 void MainWindow::on_group_button_clicked()
 {
     QString timer_type = timers[ui->listWidget->currentRow()]->type;
@@ -239,6 +251,9 @@ void MainWindow::on_group_button_clicked()
     }
 }
 
+/**
+* @brief sets Do Not Disturb mode
+*/
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
     if (DNDisturb) DNDisturb = false;
@@ -253,10 +268,10 @@ void MainWindow::on_checkBox_stateChanged(int arg1)
 
 void MainWindow::on_time_end_userTimeChanged(const QTime &time)
 {
-    DND_finish = ui->time_end->time();
+    DND_finish = time;
 }
 
 void MainWindow::on_time_begin_userTimeChanged(const QTime &time)
 {
-    DND_start = ui->time_begin->time();
+    DND_start = time;
 }
