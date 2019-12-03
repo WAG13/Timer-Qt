@@ -41,7 +41,7 @@ void MainWindow::on_delete_button_clicked()
 
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-
+    ui->delete_button->setEnabled(true);
 }
 
 void MainWindow::add_element(SmartTimer* timer)
@@ -79,15 +79,6 @@ void MainWindow::addTimer(SmartTimer* timer_)
 
 void MainWindow::show_timer(SmartTimer* current_timer)
 {
-    /*if (current_timer->mode == 2)
-    {
-        ui->play_button->hide();
-        ui->reset_button->hide();
-    }else
-    {
-        ui->play_button->show();
-        ui->reset_button->show();
-    */
     if (current_timer->work)
         ui->play_button->setText("PAUSE");
     else ui->play_button->setText("PLAY");
@@ -100,6 +91,7 @@ void MainWindow::show_timer(SmartTimer* current_timer)
 
     if (current_timer->is_note)
         ui->notes->setPlainText(current_timer->note);
+    else ui->notes->setPlainText("");
 
     ui->progressBar->setMaximum(current_timer->ms_end);
     ui->progressBar->setValue(current_timer->ms);
@@ -177,9 +169,11 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
             }else{
             ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/alarm.png"));
             }
+            ui->listWidget->item(i)->setHidden(false);
         }
         else {
             ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/not.png"));
+            ui->listWidget->item(i)->setHidden(true);
         }
     }
 
