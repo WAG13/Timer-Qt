@@ -2,6 +2,8 @@
 #define TIMERSETTER_H
 
 #include "smarttimer.h"
+#include "smarttimeralarm.h"
+#include "smarttimertimer.h"
 #include <QDialog>
 #include <QDateTime>
 
@@ -23,7 +25,7 @@ private slots:
 private:
 
 signals:
-    void send_element (SmartTimer a);
+    void send_element (SmartTimer* a);
 
 };
 

@@ -210,27 +210,53 @@ font: 25 14pt &quot;Calibri Light&quot;;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="Timer_time">
-           <property name="font">
-            <font>
-             <family>Segoe UI</family>
-             <pointsize>30</pointsize>
-             <weight>9</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(190, 190, 190);
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <spacer name="spacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>65</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="Timer_time">
+             <property name="font">
+              <font>
+               <family>Segoe UI</family>
+               <pointsize>30</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(190, 190, 190);
 font: 75 30pt &quot;Segoe UI&quot;;</string>
-           </property>
-           <property name="text">
-            <string>00:00:00</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
+             </property>
+             <property name="text">
+              <string>00:00:00.0</string>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item alignment="Qt::AlignBottom">
           <widget class="QProgressBar" name="progressBar">
@@ -304,72 +330,31 @@ font: 25 20pt &quot;Calibri&quot;</string>
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignTop">
-          <widget class="QLabel" name="Timer_note">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>150</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Calibri Light</family>
-             <pointsize>16</pointsize>
-             <weight>3</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="toolTipDuration">
-            <number>-1</number>
-           </property>
+         <item>
+          <widget class="QPlainTextEdit" name="plainTextEdit">
            <property name="styleSheet">
             <string notr="true">color: rgb(190, 190, 190);
 font: 25 16pt &quot;Calibri Light&quot;;</string>
            </property>
-           <property name="text">
-            <string/>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="backgroundVisible">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="buttons_layout">
-         <item>
-          <widget class="QPushButton" name="stop_button">
-           <property name="font">
-            <font>
-             <family>Calibri</family>
-             <pointsize>16</pointsize>
-             <weight>50</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-color:rgb(20, 20, 20);
-background-color: rgb(255, 105, 105, 180);
-border-radius: 25px;
-padding: 15px;
-min-width: 5em;
-}
-
-QPushButton:pressed {
-    background-color: rgb(255, 105, 105, 150);
-}</string>
-           </property>
-           <property name="text">
-            <string>STOP</string>
-           </property>
-          </widget>
-         </item>
-         <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="1">
           <widget class="QPushButton" name="play_button">
            <property name="font">
             <font>
@@ -395,7 +380,7 @@ QPushButton:pressed {
 }</string>
            </property>
            <property name="text">
-            <string>START</string>
+            <string>PAUSE</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -405,7 +390,20 @@ QPushButton:pressed {
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="0">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
           <widget class="QPushButton" name="reset_button">
            <property name="font">
             <font>
@@ -433,6 +431,19 @@ QPushButton:pressed {
             <string>RESET</string>
            </property>
           </widget>
+         </item>
+         <item row="0" column="2">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>

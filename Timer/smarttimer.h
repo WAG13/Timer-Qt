@@ -2,6 +2,7 @@
 #define SMARTTIMER_H
 
 #include <QDateTime>
+#include <QMediaPlayer>
 
 class SmartTimer
 {
@@ -10,12 +11,16 @@ public:
     QString name;
     int mode;
     bool work;
-    QDateTime time;
+    QUrl melodyURL;
+    QDateTime time; //start time
+
     int ms_end;
     int ms;
 
-    SmartTimer(QString name, int mode, QDateTime time, int ms);
-    ~SmartTimer();
+    SmartTimer(QString name, int mode, QDateTime time, QDateTime end_time);
+    void change(int a) { ms -= a; }
 };
 
+#include "smarttimeralarm.h"
+#include "smarttimertimer.h"
 #endif // SMARTTIMER_H

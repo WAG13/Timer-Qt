@@ -3,8 +3,9 @@
 #include <QTimer>
 #include <QTime>
 #include <QDateTime>
-#include "smarttimer.h"
 #include <QDebug>
+#include "smarttimer.h"
+
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
@@ -30,10 +31,12 @@ void MainWindow::on_add_button_clicked()
 
 void MainWindow::on_delete_button_clicked()
 {
-    if(!(ui->listWidget->selectedItems().isEmpty())) timer_count--;
-    ui->progressBar->setValue(timer_count);
-    qDeleteAll(ui->listWidget->selectedItems());
-
+    if (timers.size()>0)
+    {
+    timers.removeAt(ui->listWidget->currentRow());
+    QListWidgetItem *it = ui->listWidget->takeItem(ui->listWidget->currentRow());
+    delete it;
+    }
 }
 
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
@@ -42,38 +45,34 @@ void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 
 }
 
-void MainWindow::add_element(SmartTimer timer)
+void MainWindow::add_element(SmartTimer* timer)
 {
 
-    if(timer.mode==2)
+    if(timer->mode==2)
     {
-        addAlarm();
-    }else if (timer.mode == 1)
+        addAlarm(timer);
+    }else if (timer->mode == 1)
     {
         addTimer(timer);
     }
     ui->listWidget->setCurrentRow(timers.size()-1);
 }
 
-void MainWindow::addAlarm()
+void MainWindow::addAlarm(SmartTimer* timer_)
 {
-    timer_count++;
-    ui->progressBar->setValue(timer_count);
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),QString::number(timer_count));
+    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),timer_.name);
     ui->listWidget->addItem(item);
+    timers.push_back(timer_);
 }
 
-void MainWindow::addTimer(SmartTimer timer)
+void MainWindow::addTimer(SmartTimer* timer_)
 {
-    ui->play_button->hide();
-    timer_count++;
-    ui->progressBar->setValue(timer_count);
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timer.name);
+    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timer_.name);
     ui->listWidget->addItem(item);
-    timers.push_back(timer);
+    timers.push_back(timer_);
 }
 
-void MainWindow::show_timer(SmartTimer current_timer)
+void MainWindow::show_timer(SmartTimer* current_timer)
 {
     ui->Timer_name->setText(current_timer.name);
     if (current_timer.mode==1) ui->Timer_mode->setText("Timer");
@@ -87,7 +86,12 @@ void MainWindow::show_timer(SmartTimer current_timer)
     QString show_time = showt.toString("hh:mm:ss.z");
 
     ui->Timer_time->setText(show_time);
-    qDebug() << QString::number(current_timer.ms) << "ms";
+}
+
+void MainWindow::end_signal(SmartTimer* end_timer)
+{
+    ta = new timeralarm(end_timer, this);
+    ta->show();
 }
 
 void MainWindow::update_time()
@@ -95,15 +99,16 @@ void MainWindow::update_time()
     QDateTime current(QDateTime::currentDateTimeUtc());
 
     if (timers.size()>0)
-        show_timer(timers[ui->listWidget->currentRow()]);
+        show_timer(*timers[ui->listWidget->currentRow()]);
     for (int i = 0; i < timers.size(); i++){
-        if (timers[i].ms <= 0)
+        if (timers[i]->ms <= 0)
         {
-            timers[i].work = false;
+            if (timers[i]->work) end_signal(timers[i]);
+            timers[i]->work = false;
         }
-        if (timers[i].work)
+        if (timers[i]->work)
         {
-            timers[i].ms -= 100;
+            timers[i]->ms -= 100;
         }
     }
 }

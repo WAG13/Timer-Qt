@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui \
+         multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,15 +20,22 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     smarttimer.cpp \
+    smarttimeralarm.cpp \
+    smarttimertimer.cpp \
+    timeralarm.cpp \
     timersetter.cpp
 
 HEADERS += \
     mainwindow.h \
     smarttimer.h \
+    smarttimeralarm.h \
+    smarttimertimer.h \
+    timeralarm.h \
     timersetter.h
 
 FORMS += \
     mainwindow.ui \
+    timeralarm.ui \
     timersetter.ui
 
 # Default rules for deployment.

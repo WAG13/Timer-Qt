@@ -248,8 +248,10 @@ Makefile: ..\Timer\Timer.pro ..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\win32-msvc\q
 		..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\features\yacc.prf \
 		..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\features\lex.prf \
 		..\Timer\Timer.pro \
+		..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Multimedia.prl \
 		..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Widgets.prl \
 		..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Gui.prl \
+		..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Network.prl \
 		..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Core.prl \
 		..\..\..\Qt\5.13.1\msvc2017_64\lib\qtmain.prl
 	$(QMAKE) -o Makefile ..\Timer\Timer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -424,8 +426,10 @@ Makefile: ..\Timer\Timer.pro ..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\win32-msvc\q
 ..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\features\yacc.prf:
 ..\..\..\Qt\5.13.1\msvc2017_64\mkspecs\features\lex.prf:
 ..\Timer\Timer.pro:
+..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Multimedia.prl:
 ..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Widgets.prl:
 ..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Gui.prl:
+..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Network.prl:
 ..\..\..\Qt\5.13.1\msvc2017_64\lib\Qt5Core.prl:
 ..\..\..\Qt\5.13.1\msvc2017_64\lib\qtmain.prl:
 qmake: FORCE

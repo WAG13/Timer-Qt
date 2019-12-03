@@ -9,7 +9,7 @@ timersetter::timersetter(QWidget *parent) :
 {
     ts->setupUi(this);
     QWidget* pwidget = parentWidget();
-    connect(this,SIGNAL(send_element(SmartTimer)),pwidget,SLOT(add_element(SmartTimer)));
+    connect(this,SIGNAL(send_element(SmartTimer*)),pwidget,SLOT(add_element(SmartTimer*)));
 }
 
 timersetter::~timersetter()
@@ -20,13 +20,12 @@ timersetter::~timersetter()
 
 void timersetter::on_pushButton_OK_clicked()
 {
-    SmartTimer timer(ts->plainTextEdit->toPlainText(), 1, QDateTime::currentDateTimeUtc(), ts->timeEdit->time().msecsSinceStartOfDay());
-    qDebug() << timer.time.toTime_t();
-    //timer.time.addMSecs(ts->timeEdit->time().msecsSinceStartOfDay());
     if (ts->radio_alarm->isChecked()){
-       send_element(timer);
+        SmartTimer* timer = new SmartTimerAlarm(ts->plainTextEdit->toPlainText(), QDateTime::currentDateTimeUtc(), ts->timeEdit->time());
+        send_element(timer);
     }
     else if (ts->radio_timer->isChecked()){        
+        SmartTimer* timer = new SmartTimerTimer(ts->plainTextEdit->toPlainText(), QDateTime::currentDateTimeUtc(), ts->timeEdit->time());
         send_element(timer);
     }
 

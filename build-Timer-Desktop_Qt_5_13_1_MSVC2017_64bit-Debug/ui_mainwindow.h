@@ -12,12 +12,15 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -41,15 +44,18 @@ public:
     QVBoxLayout *timer_layout;
     QLabel *Timer_name;
     QLabel *Timer_mode;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *spacer;
     QLabel *Timer_time;
     QProgressBar *progressBar;
     QVBoxLayout *note_layout;
     QLabel *label_3;
-    QLabel *Timer_note;
-    QHBoxLayout *buttons_layout;
-    QPushButton *stop_button;
+    QPlainTextEdit *plainTextEdit;
+    QGridLayout *gridLayout;
     QPushButton *play_button;
+    QSpacerItem *horizontalSpacer;
     QPushButton *reset_button;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -185,6 +191,12 @@ public:
 
         timer_layout->addWidget(Timer_mode, 0, Qt::AlignTop);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        spacer = new QSpacerItem(65, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(spacer);
+
         Timer_time = new QLabel(widget_2);
         Timer_time->setObjectName(QString::fromUtf8("Timer_time"));
         QFont font6;
@@ -196,9 +208,14 @@ public:
         Timer_time->setFont(font6);
         Timer_time->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
 "font: 75 30pt \"Segoe UI\";"));
-        Timer_time->setAlignment(Qt::AlignCenter);
+        Timer_time->setScaledContents(false);
+        Timer_time->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        Timer_time->setWordWrap(true);
 
-        timer_layout->addWidget(Timer_time);
+        horizontalLayout_2->addWidget(Timer_time);
+
+
+        timer_layout->addLayout(horizontalLayout_2);
 
         progressBar = new QProgressBar(widget_2);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
@@ -236,60 +253,31 @@ public:
 
         note_layout->addWidget(label_3, 0, Qt::AlignTop);
 
-        Timer_note = new QLabel(widget_2);
-        Timer_note->setObjectName(QString::fromUtf8("Timer_note"));
-        Timer_note->setMinimumSize(QSize(0, 150));
-        QFont font7;
-        font7.setFamily(QString::fromUtf8("Calibri Light"));
-        font7.setPointSize(16);
-        font7.setBold(false);
-        font7.setItalic(false);
-        font7.setWeight(3);
-        Timer_note->setFont(font7);
-        Timer_note->setToolTipDuration(-1);
-        Timer_note->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+        plainTextEdit = new QPlainTextEdit(widget_2);
+        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        plainTextEdit->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
 "font: 25 16pt \"Calibri Light\";"));
-        Timer_note->setAlignment(Qt::AlignCenter);
+        plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        plainTextEdit->setReadOnly(true);
+        plainTextEdit->setBackgroundVisible(false);
 
-        note_layout->addWidget(Timer_note, 0, Qt::AlignTop);
+        note_layout->addWidget(plainTextEdit);
 
 
         verticalLayout->addLayout(note_layout);
 
-        buttons_layout = new QHBoxLayout();
-        buttons_layout->setObjectName(QString::fromUtf8("buttons_layout"));
-        stop_button = new QPushButton(widget_2);
-        stop_button->setObjectName(QString::fromUtf8("stop_button"));
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("Calibri"));
-        font8.setPointSize(16);
-        font8.setBold(false);
-        font8.setItalic(false);
-        font8.setWeight(50);
-        stop_button->setFont(font8);
-        stop_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"color:rgb(20, 20, 20);\n"
-"background-color: rgb(255, 105, 105, 180);\n"
-"border-radius: 25px;\n"
-"padding: 15px;\n"
-"min-width: 5em;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(255, 105, 105, 150);\n"
-"}"));
-
-        buttons_layout->addWidget(stop_button);
-
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         play_button = new QPushButton(widget_2);
         play_button->setObjectName(QString::fromUtf8("play_button"));
-        QFont font9;
-        font9.setFamily(QString::fromUtf8("Calibri"));
-        font9.setPointSize(16);
-        font9.setBold(true);
-        font9.setItalic(false);
-        font9.setWeight(75);
-        play_button->setFont(font9);
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("Calibri"));
+        font7.setPointSize(16);
+        font7.setBold(true);
+        font7.setItalic(false);
+        font7.setWeight(75);
+        play_button->setFont(font7);
         play_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color:rgb(20, 20, 20);\n"
 "background-color: rgb(5, 184, 204);\n"
@@ -305,10 +293,20 @@ public:
         play_button->setAutoDefault(false);
         play_button->setFlat(false);
 
-        buttons_layout->addWidget(play_button);
+        gridLayout->addWidget(play_button, 0, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
 
         reset_button = new QPushButton(widget_2);
         reset_button->setObjectName(QString::fromUtf8("reset_button"));
+        QFont font8;
+        font8.setFamily(QString::fromUtf8("Calibri"));
+        font8.setPointSize(16);
+        font8.setBold(false);
+        font8.setItalic(false);
+        font8.setWeight(50);
         reset_button->setFont(font8);
         reset_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color:rgb(20, 20, 20);\n"
@@ -322,10 +320,14 @@ public:
 "    background-color: rgb(190, 190, 190, 150);\n"
 "}"));
 
-        buttons_layout->addWidget(reset_button);
+        gridLayout->addWidget(reset_button, 1, 1, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
 
 
-        verticalLayout->addLayout(buttons_layout);
+        verticalLayout->addLayout(gridLayout);
 
 
         horizontalLayout->addWidget(widget_2, 0, Qt::AlignHCenter);
@@ -345,11 +347,9 @@ public:
         add_button->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         Timer_name->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));
         Timer_mode->setText(QCoreApplication::translate("MainWindow", "mode", nullptr));
-        Timer_time->setText(QCoreApplication::translate("MainWindow", "00:00:00", nullptr));
+        Timer_time->setText(QCoreApplication::translate("MainWindow", "00:00:00.0", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Note:", nullptr));
-        Timer_note->setText(QString());
-        stop_button->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
-        play_button->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
+        play_button->setText(QCoreApplication::translate("MainWindow", "PAUSE", nullptr));
         reset_button->setText(QCoreApplication::translate("MainWindow", "RESET", nullptr));
     } // retranslateUi
 
