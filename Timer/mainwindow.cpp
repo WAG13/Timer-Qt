@@ -156,14 +156,17 @@ void MainWindow::end_signal(SmartTimer* end_timer)
 */
 void MainWindow::update_time()
 {
-    QDateTime current(QDateTime::currentDateTimeUtc());
+    QDateTime current(QDateTime::currentDateTime());
 
     if (timers.size()>0)
         show_timer(timers[ui->listWidget->currentRow()]);
     for (int i = 0; i < timers.size(); i++){
         if (timers[i]->ms <= 0)
         {
-            if (timers[i]->work) end_signal(timers[i]);
+            qDebug()<<current.time().toString("hh:mm:ss");
+            if (current.time()<DND_start || current.time()>DND_finish)
+                if (timers[i]->work)
+                    end_signal(timers[i]);
             timers[i]->work = false;
         }
         if (timers[i]->work)
@@ -200,7 +203,6 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     if (timers.size()>0)
     for (int i = 0; i < timers.size(); i++){
         bool filter=true;
-        qDebug()<<i;
 
         switch (index)
         {
@@ -217,18 +219,44 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
         }
         if (filter)
         {
-            if (timers[i]->mode==1)
-            {
-            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/timer.png"));
-            }else{
-            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/alarm.png"));
-            }
             ui->listWidget->item(i)->setHidden(false);
         }
         else {
-            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/not.png"));
             ui->listWidget->item(i)->setHidden(true);
         }
     }
 
+}
+
+
+void MainWindow::on_group_button_clicked()
+{
+    QString timer_type = timers[ui->listWidget->currentRow()]->type;
+    timers[ui->listWidget->currentRow()]->pp();
+    for (int i = 0; i < timers.size(); i++){
+        if (timers[i]->type == timer_type && ui->listWidget->currentRow()!=i)
+                timers[i]->work = timers[ui->listWidget->currentRow()]->work;
+    }
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+    if (DNDisturb) DNDisturb = false;
+    else
+    {
+        DNDisturb = true;
+        DND_start = ui->time_begin->time();
+        DND_finish = ui->time_end->time();
+    }
+
+}
+
+void MainWindow::on_time_end_userTimeChanged(const QTime &time)
+{
+    DND_finish = ui->time_end->time();
+}
+
+void MainWindow::on_time_begin_userTimeChanged(const QTime &time)
+{
+    DND_start = ui->time_begin->time();
 }

@@ -38,6 +38,9 @@ public:
     ~MainWindow();
     QList<SmartTimer*> timers;
     QTimer *timer;
+    bool DNDisturb = false;
+    QTime DND_start;
+    QTime DND_finish;
 
 public slots:
     void add_element(SmartTimer* timer);
@@ -54,6 +57,12 @@ private slots:
     void on_play_button_clicked();
     void on_reset_button_clicked();
     void show_timer(SmartTimer* current_timer);
+    void on_group_button_clicked();
+    void on_checkBox_stateChanged(int arg1);
+
+    void on_time_end_userTimeChanged(const QTime &time);
+
+    void on_time_begin_userTimeChanged(const QTime &time);
 
 private:
     Ui::MainWindow *ui;

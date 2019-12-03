@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -34,8 +36,14 @@ public:
     QHBoxLayout *horizontalLayout;
     QWidget *widget_3;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label_4;
+    QVBoxLayout *verticalLayout_3;
+    QCheckBox *checkBox;
     QHBoxLayout *horizontalLayout_4;
+    QTimeEdit *time_begin;
+    QLabel *label_2;
+    QTimeEdit *time_end;
+    QLabel *label_4;
+    QHBoxLayout *horizontalLayout_5;
     QLabel *label;
     QComboBox *comboBox;
     QListWidget *listWidget;
@@ -58,8 +66,9 @@ public:
     QGridLayout *gridLayout;
     QPushButton *play_button;
     QSpacerItem *horizontalSpacer;
-    QPushButton *reset_button;
     QSpacerItem *horizontalSpacer_2;
+    QPushButton *group_button;
+    QPushButton *reset_button;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -93,6 +102,48 @@ public:
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         verticalLayout_2 = new QVBoxLayout(widget_3);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        checkBox = new QCheckBox(widget_3);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBox->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 14pt \"Calibri\""));
+
+        verticalLayout_3->addWidget(checkBox);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        time_begin = new QTimeEdit(widget_3);
+        time_begin->setObjectName(QString::fromUtf8("time_begin"));
+        time_begin->setMinimumSize(QSize(130, 0));
+        time_begin->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 14pt \"Calibri Light\";"));
+
+        horizontalLayout_4->addWidget(time_begin, 0, Qt::AlignRight);
+
+        label_2 = new QLabel(widget_3);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setMaximumSize(QSize(15, 16777215));
+        label_2->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 14pt \"Calibri\""));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_4->addWidget(label_2, 0, Qt::AlignHCenter);
+
+        time_end = new QTimeEdit(widget_3);
+        time_end->setObjectName(QString::fromUtf8("time_end"));
+        time_end->setMinimumSize(QSize(130, 0));
+        time_end->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 14pt \"Calibri Light\";"));
+
+        horizontalLayout_4->addWidget(time_end, 0, Qt::AlignLeft);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_4);
+
+
+        verticalLayout_2->addLayout(verticalLayout_3);
+
         label_4 = new QLabel(widget_3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         QFont font1;
@@ -108,8 +159,8 @@ public:
 
         verticalLayout_2->addWidget(label_4);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         label = new QLabel(widget_3);
         label->setObjectName(QString::fromUtf8("label"));
         label->setMaximumSize(QSize(100, 16777215));
@@ -117,7 +168,7 @@ public:
 "font: 25 14pt \"Calibri\""));
         label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        horizontalLayout_4->addWidget(label);
+        horizontalLayout_5->addWidget(label);
 
         comboBox = new QComboBox(widget_3);
         comboBox->addItem(QString());
@@ -181,10 +232,10 @@ public:
         comboBox->setMaxCount(2147483644);
         comboBox->setInsertPolicy(QComboBox::InsertAtBottom);
 
-        horizontalLayout_4->addWidget(comboBox);
+        horizontalLayout_5->addWidget(comboBox);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
+        verticalLayout_2->addLayout(horizontalLayout_5);
 
         listWidget = new QListWidget(widget_3);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -385,6 +436,27 @@ public:
 
         gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
 
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
+
+        group_button = new QPushButton(widget_2);
+        group_button->setObjectName(QString::fromUtf8("group_button"));
+        group_button->setFont(font3);
+        group_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color:rgb(20, 20, 20);\n"
+"background-color: rgb(190, 190, 190, 180);\n"
+"border-radius: 25px;\n"
+"padding: 15px;\n"
+"min-width: 5em;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(190, 190, 190, 150);\n"
+"}"));
+
+        gridLayout->addWidget(group_button, 1, 2, 1, 1);
+
         reset_button = new QPushButton(widget_2);
         reset_button->setObjectName(QString::fromUtf8("reset_button"));
         QFont font8;
@@ -406,11 +478,7 @@ public:
 "    background-color: rgb(190, 190, 190, 150);\n"
 "}"));
 
-        gridLayout->addWidget(reset_button, 1, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
+        gridLayout->addWidget(reset_button, 1, 0, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -431,6 +499,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        checkBox->setText(QCoreApplication::translate("MainWindow", "Do not disturb ", nullptr));
+        time_begin->setDisplayFormat(QCoreApplication::translate("MainWindow", "HH:mm:ss", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        time_end->setDisplayFormat(QCoreApplication::translate("MainWindow", "HH:mm:ss", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Timers:", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Filters:", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "all", nullptr));
@@ -451,6 +523,7 @@ public:
         Timer_time->setText(QCoreApplication::translate("MainWindow", "00:00:00.0", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Note:", nullptr));
         play_button->setText(QCoreApplication::translate("MainWindow", "PAUSE", nullptr));
+        group_button->setText(QCoreApplication::translate("MainWindow", "GROUP", nullptr));
         reset_button->setText(QCoreApplication::translate("MainWindow", "RESET", nullptr));
     } // retranslateUi
 
