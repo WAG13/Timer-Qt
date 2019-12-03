@@ -331,7 +331,7 @@ font: 25 20pt &quot;Calibri&quot;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit">
+          <widget class="QPlainTextEdit" name="notes">
            <property name="styleSheet">
             <string notr="true">color: rgb(190, 190, 190);
 font: 25 16pt &quot;Calibri Light&quot;;</string>

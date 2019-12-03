@@ -38,6 +38,8 @@ private slots:
     void on_delete_button_clicked();
     void on_listWidget_itemClicked(QListWidgetItem *item);
     void show_timer(SmartTimer* current_timer);
+    void on_play_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     timersetter *ts;

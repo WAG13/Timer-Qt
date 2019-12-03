@@ -1,13 +1,30 @@
 #include "smarttimeralarm.h"
 
-SmartTimerAlarm::SmartTimerAlarm(QString name_, QDateTime time_, int ms_)
+SmartTimerAlarm::SmartTimerAlarm(QString name_, QTime end_time)
 {
     name = name_;
     mode = 2;
     work = true;
-    time = time_;
-    ms = ms_;
+    time.setDate(QDate::currentDate());
+    time.setTime(end_time);
+
+    QDateTime now = QDateTime::currentDateTimeUtc();
+    ms = now.msecsTo(time);
     ms_end = ms;
-    time_end = time_end.addMSecs(ms);
     melodyURL = QUrl("qrc:/sound/sounds/cuckoo-clock-05.wav");
+}
+
+void SmartTimerAlarm::change(int a)
+{
+    if (work)
+    {
+        QDateTime now = QDateTime::currentDateTimeUtc();
+        ms = now.msecsTo(time);
+    }
+}
+
+void SmartTimerAlarm::pp()
+{
+    if (work) work=false;
+    else work=true;
 }

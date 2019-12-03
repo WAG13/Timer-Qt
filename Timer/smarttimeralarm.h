@@ -2,14 +2,16 @@
 #define SMARTTIMERALARM_H
 
 #include "smarttimer.h"
+#include <QMediaPlayer>
 #include "QDateTime"
+#include "QTime"
 
 class SmartTimerAlarm : public SmartTimer
 {
 public:
-    QDateTime time_end;
-    SmartTimerAlarm(QString name, QDateTime time, QDateTime end_time);
+    SmartTimerAlarm(QString name, QTime end_time);
     void change(int a);
+    void pp();
 };
 
 #endif // SMARTTIMERALARM_H

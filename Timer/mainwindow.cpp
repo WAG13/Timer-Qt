@@ -41,7 +41,6 @@ void MainWindow::on_delete_button_clicked()
 
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-    ui->delete_button->setEnabled(true);
 
 }
 
@@ -60,29 +59,52 @@ void MainWindow::add_element(SmartTimer* timer)
 
 void MainWindow::addAlarm(SmartTimer* timer_)
 {
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),timer_.name);
-    ui->listWidget->addItem(item);
-    timers.push_back(timer_);
+    if (timer_)
+    {
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),timer_->name);
+        ui->listWidget->addItem(item);
+        timers.push_back(timer_);
+    }
 }
 
 void MainWindow::addTimer(SmartTimer* timer_)
 {
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timer_.name);
-    ui->listWidget->addItem(item);
-    timers.push_back(timer_);
+    if (timer_)
+    {
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timer_->name);
+        ui->listWidget->addItem(item);
+        timers.push_back(timer_);
+    }
 }
 
 void MainWindow::show_timer(SmartTimer* current_timer)
 {
-    ui->Timer_name->setText(current_timer.name);
-    if (current_timer.mode==1) ui->Timer_mode->setText("Timer");
-    if (current_timer.mode==2) ui->Timer_mode->setText("Alarm");
+    if (current_timer->mode == 2)
+    {
+        ui->play_button->hide();
+        ui->reset_button->hide();
+    }else
+    {
+        ui->play_button->show();
+        ui->reset_button->show();
+        if (current_timer->work)
+            ui->play_button->setText("PAUSE");
+        else ui->play_button->setText("PLAY");
+    }
+    ui->Timer_name->setText(current_timer->name);
+    if (current_timer->mode==1)
+        ui->Timer_mode->setText("Timer "+current_timer->type);
+    if (current_timer->mode==2)
+        ui->Timer_mode->setText("Alarm "+current_timer->type);
 
-    ui->progressBar->setMaximum(current_timer.ms_end);
-    ui->progressBar->setValue(current_timer.ms);
+    if (current_timer->is_note)
+        ui->notes->setPlainText(current_timer->note);
+
+    ui->progressBar->setMaximum(current_timer->ms_end);
+    ui->progressBar->setValue(current_timer->ms);
 
     QTime temp(0,0);
-    QTime showt = temp.addMSecs(current_timer.ms);
+    QTime showt = temp.addMSecs(current_timer->ms);
     QString show_time = showt.toString("hh:mm:ss.z");
 
     ui->Timer_time->setText(show_time);
@@ -99,7 +121,7 @@ void MainWindow::update_time()
     QDateTime current(QDateTime::currentDateTimeUtc());
 
     if (timers.size()>0)
-        show_timer(*timers[ui->listWidget->currentRow()]);
+        show_timer(timers[ui->listWidget->currentRow()]);
     for (int i = 0; i < timers.size(); i++){
         if (timers[i]->ms <= 0)
         {
@@ -108,7 +130,12 @@ void MainWindow::update_time()
         }
         if (timers[i]->work)
         {
-            timers[i]->ms -= 100;
+            timers[i]->change(100);
         }
     }
+}
+
+void MainWindow::on_play_button_clicked()
+{
+    timers[ui->listWidget->currentRow()]->pp();
 }

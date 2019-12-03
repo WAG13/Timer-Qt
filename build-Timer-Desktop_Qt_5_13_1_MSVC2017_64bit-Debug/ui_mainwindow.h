@@ -50,7 +50,7 @@ public:
     QProgressBar *progressBar;
     QVBoxLayout *note_layout;
     QLabel *label_3;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *notes;
     QGridLayout *gridLayout;
     QPushButton *play_button;
     QSpacerItem *horizontalSpacer;
@@ -253,16 +253,16 @@ public:
 
         note_layout->addWidget(label_3, 0, Qt::AlignTop);
 
-        plainTextEdit = new QPlainTextEdit(widget_2);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
-        plainTextEdit->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+        notes = new QPlainTextEdit(widget_2);
+        notes->setObjectName(QString::fromUtf8("notes"));
+        notes->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
 "font: 25 16pt \"Calibri Light\";"));
-        plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        plainTextEdit->setReadOnly(true);
-        plainTextEdit->setBackgroundVisible(false);
+        notes->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        notes->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        notes->setReadOnly(true);
+        notes->setBackgroundVisible(false);
 
-        note_layout->addWidget(plainTextEdit);
+        note_layout->addWidget(notes);
 
 
         verticalLayout->addLayout(note_layout);
