@@ -16,7 +16,7 @@ public:
     bool is_note=false;
     QString note="";
 
-    QString type="defoult";
+    QString type="default";
 
     bool is_melodic=false;
     QUrl melodyURL;

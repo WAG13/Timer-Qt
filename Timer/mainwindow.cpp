@@ -150,7 +150,6 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
     if (index==0) ui->delete_button->show();
     else ui->delete_button->hide();
-    ui->listWidget->clear();
 
     if (timers.size()>0)
     for (int i = 0; i < timers.size(); i++){
@@ -166,23 +165,22 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
         case 4: {filter=!(timers[i]->work);}break;
         case 5: {filter=timers[i]->is_note;}break;
         case 6: {filter=timers[i]->is_melodic;}break;
-        case 7: {filter=(timers[i]->type == "defoult");}break;
-        case 8: {filter=(timers[i]->type != "defoult");}break;
+        case 7: {filter=(timers[i]->type == "default");}break;
+        case 8: {filter=(timers[i]->type != "default");}break;
+        default: break;
         }
         if (filter)
         {
             if (timers[i]->mode==1)
-            {qDebug()<<"timer";
-            QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/timer.png"),timers[i]->name);
-            ui->listWidget->addItem(item);
-            }else{qDebug()<<"alarm";
-            QListWidgetItem *item = new QListWidgetItem(QIcon(":/rec/Timer_icons/alarm.png"),timers[i]->name);
-            ui->listWidget->addItem(item);
+            {
+            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/timer.png"));
+            }else{
+            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/alarm.png"));
             }
         }
         else {
-            QListWidgetItem *item = new QListWidgetItem("");
-            ui->listWidget->addItem(item);
+            ui->listWidget->item(i)->setIcon(QIcon(":/rec/Timer_icons/not.png"));
         }
     }
+
 }
