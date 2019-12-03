@@ -79,7 +79,7 @@ void MainWindow::addTimer(SmartTimer* timer_)
 
 void MainWindow::show_timer(SmartTimer* current_timer)
 {
-    if (current_timer->mode == 2)
+    /*if (current_timer->mode == 2)
     {
         ui->play_button->hide();
         ui->reset_button->hide();
@@ -87,10 +87,11 @@ void MainWindow::show_timer(SmartTimer* current_timer)
     {
         ui->play_button->show();
         ui->reset_button->show();
-        if (current_timer->work)
-            ui->play_button->setText("PAUSE");
-        else ui->play_button->setText("PLAY");
-    }
+    */
+    if (current_timer->work)
+        ui->play_button->setText("PAUSE");
+    else ui->play_button->setText("PLAY");
+
     ui->Timer_name->setText(current_timer->name);
     if (current_timer->mode==1)
         ui->Timer_mode->setText("Timer "+current_timer->type);
@@ -138,4 +139,9 @@ void MainWindow::update_time()
 void MainWindow::on_play_button_clicked()
 {
     timers[ui->listWidget->currentRow()]->pp();
+}
+
+void MainWindow::on_reset_button_clicked()
+{
+    timers[ui->listWidget->currentRow()]->reset();
 }

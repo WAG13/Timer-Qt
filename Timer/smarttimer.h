@@ -33,6 +33,7 @@ public:
     void set_note(QString);
     void set_type(QString);
     virtual void pp(){}
+    virtual void reset(){}
 
 };
 

@@ -40,6 +40,8 @@ private slots:
     void show_timer(SmartTimer* current_timer);
     void on_play_button_clicked();
 
+    void on_reset_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     timersetter *ts;

@@ -12,6 +12,7 @@ public:
     SmartTimerAlarm(QString name, QTime end_time);
     void change(int a);
     void pp();
+    void reset();
 };
 
 #endif // SMARTTIMERALARM_H
