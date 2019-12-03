@@ -1,8 +1,22 @@
+/**
+*	@file timersetter.cpp
+*
+*	@brief setting for creating new timer
+*
+*	@author Bondarets Daryna K-29
+*
+*	@version 3/12/19
+*/
+
 #include "timersetter.h"
 #include "ui_timersetter.h"
 #include <QDebug>
 #include "smarttimer.h"
 
+/**
+* @brief constructor
+* @details creates settings window
+*/
 timersetter::timersetter(QWidget *parent) :
     QDialog(parent),
     ts(new Ui::timersetter)
@@ -12,12 +26,18 @@ timersetter::timersetter(QWidget *parent) :
     connect(this,SIGNAL(send_element(SmartTimer*)),pwidget,SLOT(add_element(SmartTimer*)));
 }
 
+/**
+* @brief destructor
+*/
 timersetter::~timersetter()
 {
     delete ts;
 }
 
-
+/**
+* @brief creates new smart timer and closes window
+* @details creates main window and sets interval of main timer
+*/
 void timersetter::on_pushButton_OK_clicked()
 {
     if (ts->radio_alarm->isChecked()){
@@ -38,11 +58,17 @@ void timersetter::on_pushButton_OK_clicked()
     close();
 }
 
+/**
+* @brief closes window
+*/
 void timersetter::on_pushButton_clicked()
 {
     close();
 }
 
+/**
+* @brief sets new melody for smart timer
+*/
 void timersetter::on_melody_button_clicked()
 {
     melody_path = QFileDialog::getOpenFileUrl(this, "melody", QUrl::fromLocalFile("C:/"), ("wav files (*.wav)"));

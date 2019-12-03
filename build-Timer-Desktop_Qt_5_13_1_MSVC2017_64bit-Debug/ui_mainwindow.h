@@ -35,6 +35,8 @@ public:
     QWidget *widget_3;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_4;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label;
     QComboBox *comboBox;
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
@@ -94,13 +96,28 @@ public:
         label_4 = new QLabel(widget_3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Calibri Light"));
+        font1.setFamily(QString::fromUtf8("Calibri"));
         font1.setPointSize(16);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(3);
         label_4->setFont(font1);
-        label_4->setStyleSheet(QString::fromUtf8("color: rgb(90, 90, 90);"));
+        label_4->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 16pt \"Calibri\""));
         label_4->setAlignment(Qt::AlignCenter);
 
         verticalLayout_2->addWidget(label_4);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        label = new QLabel(widget_3);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMaximumSize(QSize(100, 16777215));
+        label->setStyleSheet(QString::fromUtf8("color: rgb(190, 190, 190);\n"
+"font: 25 14pt \"Calibri\""));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_4->addWidget(label);
 
         comboBox = new QComboBox(widget_3);
         comboBox->addItem(QString());
@@ -164,7 +181,10 @@ public:
         comboBox->setMaxCount(2147483644);
         comboBox->setInsertPolicy(QComboBox::InsertAtBottom);
 
-        verticalLayout_2->addWidget(comboBox);
+        horizontalLayout_4->addWidget(comboBox);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
         listWidget = new QListWidget(widget_3);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -412,6 +432,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Timers:", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Filters:", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "all", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "timers", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("MainWindow", "alarms", nullptr));
@@ -419,7 +440,7 @@ public:
         comboBox->setItemText(4, QCoreApplication::translate("MainWindow", "paused", nullptr));
         comboBox->setItemText(5, QCoreApplication::translate("MainWindow", "with notes", nullptr));
         comboBox->setItemText(6, QCoreApplication::translate("MainWindow", "melodic", nullptr));
-        comboBox->setItemText(7, QCoreApplication::translate("MainWindow", "defoult", nullptr));
+        comboBox->setItemText(7, QCoreApplication::translate("MainWindow", "default", nullptr));
         comboBox->setItemText(8, QCoreApplication::translate("MainWindow", "my types", nullptr));
 
         comboBox->setCurrentText(QCoreApplication::translate("MainWindow", "all", nullptr));

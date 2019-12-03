@@ -1,3 +1,13 @@
+/**
+*	@file mainwindow.cpp
+*
+*	@brief Lab#2 smart timer
+*
+*	@author Bondarets Daryna K-29
+*
+*	@version 3/12/19
+*/
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTimer>
@@ -6,7 +16,10 @@
 #include <QDebug>
 #include "smarttimer.h"
 
-
+/**
+* @brief constructor
+* @details creates main window and sets interval of main timer
+*/
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,17 +31,28 @@ MainWindow::MainWindow(QWidget *parent):
     timer->start();
 }
 
+/**
+* @brief destructor
+*/
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/**
+* @brief adds new timer
+* @details opens window whith settings for new timer
+*/
 void MainWindow::on_add_button_clicked()
 {
     ts = new timersetter(this);
     ts->show();
 }
 
+/**
+* @brief deletes selected timer
+* @details deletes selected timer in listWidget
+*/
 void MainWindow::on_delete_button_clicked()
 {
     if (timers.size()>0)
@@ -39,25 +63,34 @@ void MainWindow::on_delete_button_clicked()
     }
 }
 
+/**
+* @brief enables delete button if timer is selected
+*/
 void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     ui->delete_button->setEnabled(true);
 }
 
+/**
+* @brief adds new element (timer or alarm)
+*/
 void MainWindow::add_element(SmartTimer* timer)
 {
     ui->comboBox->setCurrentIndex(0);
     if(timer->mode==2)
     {
-        addAlarm(timer);
+        add_alarm(timer);
     }else if (timer->mode == 1)
     {
-        addTimer(timer);
+        add_timer(timer);
     }
     ui->listWidget->setCurrentRow(timers.size()-1);
 }
 
-void MainWindow::addAlarm(SmartTimer* timer_)
+/**
+* @brief adds new alarm to timers and listWidget
+*/
+void MainWindow::add_alarm(SmartTimer* timer_)
 {
     if (timer_)
     {
@@ -67,7 +100,10 @@ void MainWindow::addAlarm(SmartTimer* timer_)
     }
 }
 
-void MainWindow::addTimer(SmartTimer* timer_)
+/**
+* @brief adds new timer to timers and listWidget
+*/
+void MainWindow::add_timer(SmartTimer* timer_)
 {
     if (timer_)
     {
@@ -77,6 +113,9 @@ void MainWindow::addTimer(SmartTimer* timer_)
     }
 }
 
+/**
+* @brief shows selected timer on the right
+*/
 void MainWindow::show_timer(SmartTimer* current_timer)
 {
     if (current_timer->work)
@@ -103,12 +142,18 @@ void MainWindow::show_timer(SmartTimer* current_timer)
     ui->Timer_time->setText(show_time);
 }
 
+/**
+* @brief calls window with end signals
+*/
 void MainWindow::end_signal(SmartTimer* end_timer)
 {
     ta = new timeralarm(end_timer, this);
     ta->show();
 }
 
+/**
+* @brief time changing of timers
+*/
 void MainWindow::update_time()
 {
     QDateTime current(QDateTime::currentDateTimeUtc());
@@ -128,16 +173,25 @@ void MainWindow::update_time()
     }
 }
 
+/**
+* @brief makes timer work
+*/
 void MainWindow::on_play_button_clicked()
 {
     timers[ui->listWidget->currentRow()]->pp();
 }
 
+/**
+* @brief makes timer not work
+*/
 void MainWindow::on_reset_button_clicked()
 {
     timers[ui->listWidget->currentRow()]->reset();
 }
 
+/**
+* @brief fiters listWidget by some properties
+*/
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
     if (index==0) ui->delete_button->show();

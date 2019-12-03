@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[20];
-    char stringdata0[288];
+    char stringdata0[290];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,35 +33,36 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 8), // "addAlarm"
-QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 11), // "SmartTimer*"
-QT_MOC_LITERAL(4, 33, 5), // "timer"
-QT_MOC_LITERAL(5, 39, 8), // "addTimer"
-QT_MOC_LITERAL(6, 48, 11), // "add_element"
-QT_MOC_LITERAL(7, 60, 10), // "end_signal"
-QT_MOC_LITERAL(8, 71, 11), // "update_time"
-QT_MOC_LITERAL(9, 83, 21), // "on_add_button_clicked"
-QT_MOC_LITERAL(10, 105, 24), // "on_delete_button_clicked"
-QT_MOC_LITERAL(11, 130, 25), // "on_listWidget_itemClicked"
-QT_MOC_LITERAL(12, 156, 16), // "QListWidgetItem*"
-QT_MOC_LITERAL(13, 173, 4), // "item"
-QT_MOC_LITERAL(14, 178, 10), // "show_timer"
-QT_MOC_LITERAL(15, 189, 13), // "current_timer"
-QT_MOC_LITERAL(16, 203, 22), // "on_play_button_clicked"
-QT_MOC_LITERAL(17, 226, 23), // "on_reset_button_clicked"
-QT_MOC_LITERAL(18, 250, 31), // "on_comboBox_currentIndexChanged"
-QT_MOC_LITERAL(19, 282, 5) // "index"
+QT_MOC_LITERAL(1, 11, 11), // "add_element"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 11), // "SmartTimer*"
+QT_MOC_LITERAL(4, 36, 5), // "timer"
+QT_MOC_LITERAL(5, 42, 9), // "add_alarm"
+QT_MOC_LITERAL(6, 52, 9), // "add_timer"
+QT_MOC_LITERAL(7, 62, 10), // "end_signal"
+QT_MOC_LITERAL(8, 73, 11), // "update_time"
+QT_MOC_LITERAL(9, 85, 21), // "on_add_button_clicked"
+QT_MOC_LITERAL(10, 107, 24), // "on_delete_button_clicked"
+QT_MOC_LITERAL(11, 132, 25), // "on_listWidget_itemClicked"
+QT_MOC_LITERAL(12, 158, 16), // "QListWidgetItem*"
+QT_MOC_LITERAL(13, 175, 4), // "item"
+QT_MOC_LITERAL(14, 180, 31), // "on_comboBox_currentIndexChanged"
+QT_MOC_LITERAL(15, 212, 5), // "index"
+QT_MOC_LITERAL(16, 218, 22), // "on_play_button_clicked"
+QT_MOC_LITERAL(17, 241, 23), // "on_reset_button_clicked"
+QT_MOC_LITERAL(18, 265, 10), // "show_timer"
+QT_MOC_LITERAL(19, 276, 13) // "current_timer"
 
     },
-    "MainWindow\0addAlarm\0\0SmartTimer*\0timer\0"
-    "addTimer\0add_element\0end_signal\0"
+    "MainWindow\0add_element\0\0SmartTimer*\0"
+    "timer\0add_alarm\0add_timer\0end_signal\0"
     "update_time\0on_add_button_clicked\0"
     "on_delete_button_clicked\0"
     "on_listWidget_itemClicked\0QListWidgetItem*\0"
-    "item\0show_timer\0current_timer\0"
-    "on_play_button_clicked\0on_reset_button_clicked\0"
-    "on_comboBox_currentIndexChanged\0index"
+    "item\0on_comboBox_currentIndexChanged\0"
+    "index\0on_play_button_clicked\0"
+    "on_reset_button_clicked\0show_timer\0"
+    "current_timer"
 };
 #undef QT_MOC_LITERAL
 
@@ -101,10 +102,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 12,   13,
-    QMetaType::Void, 0x80000000 | 3,   15,
+    QMetaType::Void, QMetaType::Int,   15,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   19,
+    QMetaType::Void, 0x80000000 | 3,   19,
 
        0        // eod
 };
@@ -115,18 +116,18 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->addAlarm((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
-        case 1: _t->addTimer((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
-        case 2: _t->add_element((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
+        case 0: _t->add_element((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
+        case 1: _t->add_alarm((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
+        case 2: _t->add_timer((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
         case 3: _t->end_signal((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
         case 4: _t->update_time(); break;
         case 5: _t->on_add_button_clicked(); break;
         case 6: _t->on_delete_button_clicked(); break;
         case 7: _t->on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 8: _t->show_timer((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
+        case 8: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 9: _t->on_play_button_clicked(); break;
         case 10: _t->on_reset_button_clicked(); break;
-        case 11: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 11: _t->show_timer((*reinterpret_cast< SmartTimer*(*)>(_a[1]))); break;
         default: ;
         }
     }

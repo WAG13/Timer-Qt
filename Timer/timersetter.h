@@ -1,3 +1,13 @@
+/**
+*	@file timersetter.h
+*
+*	@brief setting for creating new timer
+*
+*	@author Bondarets Daryna K-29
+*
+*	@version 3/12/19
+*/
+
 #ifndef TIMERSETTER_H
 #define TIMERSETTER_H
 
@@ -11,6 +21,9 @@
 
 namespace Ui {class timersetter;}
 
+/**
+* @brief class of window that sets new timer
+*/
 class timersetter : public QDialog
 {
     Q_OBJECT

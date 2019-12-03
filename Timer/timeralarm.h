@@ -1,3 +1,13 @@
+/**
+*	@file timeralarm.h
+*
+*	@brief signal that timer is ended
+*
+*	@author Bondarets Daryna K-29
+*
+*	@version 3/12/19
+*/
+
 #ifndef TIMERALARM_H
 #define TIMERALARM_H
 
@@ -8,6 +18,9 @@
 
 namespace Ui {class timeralarm;}
 
+/**
+* @brief class of window that shows that timer is ended
+*/
 class timeralarm : public QDialog
 {
     Q_OBJECT
