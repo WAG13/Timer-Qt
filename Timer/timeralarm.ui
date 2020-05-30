@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>timeralarm</class>
+ <widget class="QDialog" name="timeralarm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(50, 50, 60)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="name">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 16pt &quot;Calibri Light&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="note">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(190, 190, 190);
+font: 25 14pt &quot;Calibri Light&quot;;</string>
+       </property>
+       <property name="text">
+        <string> </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">color:rgb(20, 20, 20);
+background-color: rgba(200, 200, 220, 180);
+border-radius: 20px;
+padding: 15px;
+min-width: 5em;
+font: 25 16pt &quot;Calibri Light&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
